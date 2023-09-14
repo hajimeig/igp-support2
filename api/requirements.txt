@@ -1,0 +1,10 @@
+# DO NOT include azure-functions-worker in this file
+# The Python Worker is managed by Azure Functions platform
+# Manually managing azure-functions-worker may cause unexpected issues
+azure-functions
+openai
+opencensus-ext-azure==1.0.8
+azure-cosmos
+requests
+charset_normalizer
+python-dotenv==0.21.1

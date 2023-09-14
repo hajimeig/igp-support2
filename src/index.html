@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenAI Chat</title>
 </head>
-
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
+    <div class="header">
+        <img src="favicon.png" alt="Logo" width="50" height="50"> <!-- Replace with your logo path -->
+        <h1>IGP-Support</h1>
+    </div>
+<div class="chat-container">
+    <div class="chat-response" id="chatResponse"></div>
+    <input type="text" class="chat-entry" id="chatEntry" placeholder="Type your message...">
+</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('chatEntry').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const userMessage = this.value;
+                this.value = '';
+
+                const chatResponse = document.getElementById('chatResponse');
+
+                // Create and display user message box
+                const userMessageBox = document.createElement('div');
+                userMessageBox.classList.add('message-box', 'user');
+                userMessageBox.innerHTML = `<strong>You:</strong> ${userMessage}`;
+                chatResponse.appendChild(userMessageBox);
+
+                // Call Azure function
+                fetch('http://localhost:7071/api/HTTPTrigger', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ messages: [{ role: "user", content: userMessage }] }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Create and display model response box
+                    const modelResponseBox = document.createElement('div');
+                    modelResponseBox.classList.add('message-box', 'assistant');
+                    modelResponseBox.innerHTML = `<strong>Assistant:</strong> ${data.choices[0].message.content}`;
+                    chatResponse.appendChild(modelResponseBox);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+    });
+</script>
+</body>
 </html>
