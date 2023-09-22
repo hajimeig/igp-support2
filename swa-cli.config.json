@@ -1,0 +1,17 @@
+{
+  "configurations": {
+    "app": {
+      "appDevserverUrl": "http://localhost:8000",
+      "apiLocation": "api",
+      "run": "python -m http.server",
+      "swaConfigLocation": "./"
+    },
+    "igp-support2": {
+      "appLocation": "src",
+      "apiLocation": "api",
+      "outputLocation": ".",
+      "apiLanguage": "python",
+      "apiVersion": "3.8"
+    }
+  }
+}
