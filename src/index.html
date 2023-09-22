@@ -32,7 +32,7 @@
                 chatResponse.appendChild(userMessageBox);
 
                 // Call Azure function
-                fetch('http://localhost:7071/api/HTTPTrigger1', {
+                fetch('https://teamspiritcall.azurewebsites.net/api/HttpTrigger1', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
