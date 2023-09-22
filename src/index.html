@@ -32,7 +32,7 @@
                 chatResponse.appendChild(userMessageBox);
 
                 // Call Azure function
-                fetch('https://igp-support2.azurewebsites.net/api/HttpTrigger1', {
+                fetch('http://localhost:7071/api/HTTPTrigger1', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
