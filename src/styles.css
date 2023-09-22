@@ -69,11 +69,23 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .message-box.user::before {
-  content: url('user-avator.png');
+  content: ''; /* 画像はbackgroundプロパティで設定するため、contentは空にします */
+  background-image: url('user-avator.png');
+  background-size: contain; /* 画像がコンテナに収まるようにサイズを調整 */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+  width: 20px; /* 画像の幅を20pxに設定 */
+  height: 20px; /* 画像の高さを20pxに設定 */
+  display: inline-block; /* インライン要素として表示 */
   margin-right: 10px;
 }
 
 .message-box.assistant::before {
-  content: url('favicon.png');
+  content: ''; /* 画像はbackgroundプロパティで設定するため、contentは空にします */
+  background-image: url('favicon.png');
+  background-size: contain; /* 画像がコンテナに収まるようにサイズを調整 */
+  background-repeat: no-repeat; /* 画像を繰り返さない */
+  width: 20px; /* 画像の幅を20pxに設定 */
+  height: 20px; /* 画像の高さを20pxに設定 */
+  display: inline-block; /* インライン要素として表示 */
   margin-right: 10px;
 }
